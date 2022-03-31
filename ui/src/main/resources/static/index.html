@@ -16,18 +16,31 @@
             $("#user").html(data.name);
             $(".unauthenticated").hide()
             $(".authenticated").show()
-        });
+        })
+        let logout = function() {
+            $.post("/logout", function() {
+                $("#user").html('');
+                $(".unauthenticated").show();
+                $(".authenticated").hide();
+            })
+        return true;
+}
     </script>    
 
 </head>
 <body>
     <div class="container unauthenticated">
+        <h2>Login</h2>
         With GitHub: <a href="/oauth2/authorization/github">click here</a>
     </div>
     <div class="container authenticated" style="display:none">
+        <h2>Logged in</h2>
         Logged in as: <span id="user"></span>
+        
+        <div>
+            <button onClick="logout()" class="btn btn-primary">Logout</button>
+        </div>
     </div>
-    <h1>Demo</h1>
-    <div class="container"></div>
+
 </body>
 </html>
