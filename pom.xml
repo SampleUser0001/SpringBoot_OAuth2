@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.6.5</version>
+    <version>2.6.6</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>sample.springboot</groupId>
@@ -19,11 +19,11 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!-- <project.mainClass>sample.springboot.DemoApplication</project.mainClass> -->
     <project.mainClass>sample.springboot.SocialApplication</project.mainClass>
     
     <jquery.version>3.4.1</jquery.version>
     <bootstrap.version>4.3.1</bootstrap.version>
+    <js-cookie.version>2.1.0</js-cookie.version>
   </properties>
 
   <dependencies>
@@ -36,7 +36,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-oauth2-client</artifactId>
     </dependency>
-
+    
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>jquery</artifactId>
@@ -50,6 +50,11 @@
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>webjars-locator-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>js-cookie</artifactId>
+      <version>${js-cookie.version}</version>
     </dependency>
 
     <dependency>
