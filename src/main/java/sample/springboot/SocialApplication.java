@@ -12,8 +12,9 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-
 import org.springframework.http.HttpStatus;
+
+import javax.servlet.http.HttpServletRequest;
 
 import java.util.Map;
 import java.util.Collections;
@@ -23,9 +24,18 @@ import java.lang.Exception;
 @RestController
 public class SocialApplication extends WebSecurityConfigurerAdapter {
 
+    public static final String KEY_ERROR_MESSAGE = "error.message";
+
     @GetMapping("/user")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
         return Collections.singletonMap("name", principal.getAttribute("name"));
+    }
+
+    @GetMapping("/error")
+    public String error(HttpServletRequest request) {
+        String message = (String) request.getSession().getAttribute(KEY_ERROR_MESSAGE);
+        request.getSession().removeAttribute(KEY_ERROR_MESSAGE);
+        return message;
     }
     
     @Override
@@ -44,8 +54,13 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
             )
             .exceptionHandling(e -> e
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-            )
-            .oauth2Login();
+            );
+            // .oauth2Login(o -> o
+            //     .failureHandler((request, response, exception) -> {
+            //         request.getSession().setAttribute(KEY_ERROR_MESSAGE, exception.getMessage());
+            //         handler.onAuthenticationFailure(request, response, exception);
+            //     }
+            // );
         // @formatter:on
     }
 
