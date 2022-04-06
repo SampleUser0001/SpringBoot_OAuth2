@@ -9,11 +9,8 @@ mvn clean spring-boot:run
 
 ## URL
 
-[http://localhost:8080](http://localhost:8080)  
-Googleのみlocalhostでなければいけない。  
-GCPに承認済みのリダイレクトURIを設定する必要があるが、IPアドレスが指定できない。
+[http://192.168.1.24:8080](http://192.168.1.24:8080)
 
 ## 参考
 
 - [Spring Boot と OAuth2:SpringBoot](https://spring.pleiades.io/guides/tutorials/spring-boot-oauth2/)
-
