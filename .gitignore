@@ -12,3 +12,4 @@ buildNumber.properties
 
 # OAuth2
 application.yml
+*secret*googleusercontent*
