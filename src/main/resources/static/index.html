@@ -46,7 +46,13 @@
 <body>
     <div class="container unauthenticated">
         <h2>Login</h2>
-        With GitHub: <a href="/oauth2/authorization/github">click here</a>
+        <div>
+            With GitHub: <a href="/oauth2/authorization/github">click here</a>
+        </div>
+        <div>
+            With Google: <a href="/oauth2/authorization/google">click here</a>
+            <!-- GoogleAPI側のリダイレクトパスは${プロトコル}://${ホスト名 or IP}:${ポート番号}/login/oauth2/authorization/google -->
+        </div>
     </div>
     <div class="container authenticated" style="display:none">
         <h2>Logged in</h2>
